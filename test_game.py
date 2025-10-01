@@ -12,8 +12,8 @@ def setup_module(module):
 
     # Then compile the solution
     result = subprocess.run(["make"], capture_output=True, text=True)
-    #if result.returncode != 0:
-    #    pytest.fail(f"Failed to compile solution.cpp:\n{result.stderr}")
+    if result.returncode != 0:
+        pytest.fail(f"Failed to compile solution.cpp:\n{result.stderr}")
 
     # Verify the executable exists
     if not os.path.exists("./solution"):
